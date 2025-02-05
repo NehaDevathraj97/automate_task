@@ -37,7 +37,7 @@ pip install -r requirements.txt
 ## File Structure
 ```
 project-folder/
-│-- script.py  # Main script
+│-- automate.py  # Main script
 │-- requirements.txt  # Dependencies
 │-- run_script.bat  # Batch file to run the script
 │-- Input folder/  # Folder containing Excel files
@@ -63,7 +63,7 @@ tkinter
 Create a `run_script.bat` file with the following content:
 ```
 @echo off
-python script.py
+python automate.py
 pause
 ```
 Double-click `run_script.bat` to execute the script.
