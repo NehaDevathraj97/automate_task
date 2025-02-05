@@ -43,6 +43,8 @@ if not dfs:
 # Combine data
 combined_df = pd.concat(dfs, ignore_index=True)
 latest_date = combined_df["Date"].max()
+# Get latest year and month
+latest_year, latest_month = latest_date.year, latest_date.month
 print("Latest available date:", latest_date)
 
 if pd.isna(latest_date):
@@ -53,15 +55,25 @@ if pd.isna(latest_date):
 root = tk.Tk()
 root.withdraw()  # Hide main window
 
-user_year = simpledialog.askinteger("Input", "Enter Year (YYYY) or leave blank for latest:")
-user_month = simpledialog.askinteger("Input", "Enter month (1-12) or leave blank for latest:")
+#user_year = simpledialog.askinteger("Input", "Enter Year (YYYY) or leave blank for latest:")
+#user_month = simpledialog.askinteger("Input", "Enter month (1-12) or leave blank for latest:")
+
+# Prompt user with default values
+#user_year = simpledialog.askstring("Input", f"Enter Year (YYYY) or leave blank for {latest_year}:", initialvalue=str(latest_year))
+user_month = simpledialog.askstring("Input", f"Enter month (1-12) or leave blank for {latest_month}:", initialvalue=str(latest_month))
+
+# Convert inputs to integers if provided, otherwise use defaults
+#user_year = int(user_year) if user_year and user_year.isdigit() else latest_year
+user_month = int(user_month) if user_month and user_month.isdigit() else latest_month
+
+print(f"Using Year: {latest_year}, Month: {user_month}")
 
 
 if user_month is None or user_month not in range(1, 13):
     latest_year, latest_month = latest_date.year, latest_date.month
     print(f"Using latest month: {latest_month}")
 else:
-    latest_year, latest_month = user_year, user_month
+    latest_year, latest_month = latest_year, user_month
     print(f"Using user-selected month: {latest_month}")
 
 latest_month_data = combined_df[
