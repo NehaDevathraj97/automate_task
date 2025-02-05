@@ -15,7 +15,7 @@ This Python script processes multiple Excel files from an input folder, extracts
 Ensure you have the following Python libraries installed:
 
 ```bash
-pip install pandas openpyxl tkinter
+pip install -r requirements.txt
 ```
 
 ## How to Use
