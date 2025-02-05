@@ -63,6 +63,7 @@ tkinter
 Create a `run_script.bat` file with the following content:
 ```
 @echo off
+pip install -r requirements.txt
 python automate.py
 pause
 ```
