@@ -5,7 +5,7 @@ This Python script processes multiple Excel files from an input folder, extracts
 ## Features
 - Reads all Excel files from the input folder.
 - Checks for a `Date` column and ensures valid date conversion.
-- Uses Tkinter to prompt the user for a month or defaults to the latest month.
+- Uses Tkinter to prompt the user for a month / year or defaults to the latest month.
 - Combines data from all valid files and filters it based on the selected month.
 - Saves the consolidated data to an output Excel file.
 - Moves processed files to a `processed` folder.
