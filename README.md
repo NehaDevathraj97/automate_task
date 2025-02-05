@@ -20,7 +20,7 @@ pip install pandas openpyxl tkinter
 
 ## How to Use
 1. Place your `.xlsx` files in the specified `Input folder`.
-2. Run the script.
+2. Run the script (Double-click run_script.bat to run your Python script).
 3. When prompted, enter a month (1-12) or leave blank to use the latest month found in the data.
 4. When prompted, enter an year (YYYY) or leave blank to use the latest year found in the data.
 5. The script will generate a consolidated Excel file and move processed files.
@@ -36,6 +36,17 @@ The processed data is saved as:
 ```
 consolidated.xlsx
 ```
-
+## Steps to run the script
+- If you just want to double-click and run the script, you can create a .bat file:
+1. Open Notepad.
+2. Type the following:
+```
+@echo off
+python "C:\path\to\your_script.py"
+pause
+```
+3. Save it as run_script.bat (make sure the extension is .bat, not .txt).
+4. Double-click run_script.bat to run your Python script.
+5. This method requires Python to be installed on the system.
 ## Author
 This script was developed to automate Excel data consolidation using Python and Tkinter.
