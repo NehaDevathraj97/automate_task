@@ -1,52 +1,73 @@
-# Excel Processing with Tkinter & Pandas
+# Excel Data Processing Script
 
-This Python script processes multiple Excel files from an input folder, extracts date-related information, and consolidates data based on user-specified or the latest month. It also moves processed files to a separate folder.
+## Overview
+This script processes Excel files from the specified input folder, extracts data based on a 'Date' column, and consolidates it into a single Excel file. Processed files are then moved to a separate folder.
 
 ## Features
-- Reads all Excel files from the input folder.
-- Checks for a `Date` column and ensures valid date conversion.
-- Uses Tkinter to prompt the user for a month / year or defaults to the latest month.
-- Combines data from all valid files and filters it based on the selected month.
-- Saves the consolidated data to an output Excel file.
-- Moves processed files to a `processed` folder.
-- Displays user-friendly alerts for errors and completion.
+- Reads all `.xlsx` files from the input folder
+- Checks for a 'Date' column and converts it to datetime format
+- Extracts data for the latest month or user-specified month
+- Saves the filtered data into a consolidated Excel file
+- Moves processed files to a `processed` folder
+- Provides interactive user input using Tkinter
+- Includes error handling for missing files, invalid date formats, and missing columns
 
 ## Requirements
-Ensure you have the following Python libraries installed:
+Ensure you have Python installed (preferably Python 3.8 or newer). Required dependencies are listed in `requirements.txt`.
 
-```bash
+### Install Dependencies
+Run the following command to install necessary Python libraries:
+```sh
 pip install -r requirements.txt
 ```
 
-## How to Use
-1. Place your `.xlsx` files in the specified `Input folder`.
-2. Run the script (Double-click run_script.bat to run your Python script).
-3. When prompted, enter a month (1-12) or leave blank to use the latest month found in the data.
-4. When prompted, enter an year (YYYY) or leave blank to use the latest year found in the data.
-5. The script will generate a consolidated Excel file and move processed files.
-6. Check the output folder for `consolidated.xlsx`.
+## Usage
+1. Place your Excel files in the `Input folder`.
+2. Run the script using the provided `run_script.bat` file or manually:
+   ```sh
+   python script.py
+   ```
+3. The script will prompt for a month selection (leave blank to use the latest month).
+4. The processed data will be saved to:
+   ```
+   consolidated.xlsx
+   ```
+5. All processed files will be moved to the `processed` folder.
+
+## File Structure
+```
+project-folder/
+│-- script.py  # Main script
+│-- requirements.txt  # Dependencies
+│-- run_script.bat  # Batch file to run the script
+│-- Input folder/  # Folder containing Excel files
+│-- processed/  # Folder where processed files will be moved
+```
 
 ## Error Handling
-- Displays an alert if no files are found.
-- Skips files missing the `Date` column.
-- Notifies the user if no valid data exists for the selected month.
+- **Missing Input Files:** If no Excel files are found in the input folder, an error message is displayed.
+- **Missing 'Date' Column:** If the required 'Date' column is missing from any file, a warning is logged, and the file is skipped.
+- **Invalid Dates:** If the 'Date' column contains invalid entries, they are coerced into `NaT` (Not a Time), and only valid dates are used.
+- **No Valid Data:** If no valid data remains after filtering, a warning is displayed, and the script exits.
+- **File Processing Errors:** If an error occurs while reading a file, the script logs the error and continues processing other files.
 
-## File Output
-The processed data is saved as:
+## requirements.txt
 ```
-consolidated.xlsx
+pandas
+glob2
+openpyxl
+tkinter
 ```
-## Steps to run the script
-- If you just want to double-click and run the script, you can create a .bat file:
-1. Open Notepad.
-2. Type the following:
+
+## run_script.bat
+Create a `run_script.bat` file with the following content:
 ```
 @echo off
-python "C:\path\to\your_script.py"
+python script.py
 pause
 ```
-3. Save it as run_script.bat (make sure the extension is .bat, not .txt).
-4. Double-click run_script.bat to run your Python script.
-5. This method requires Python to be installed on the system.
-## Author
-This script was developed to automate Excel data consolidation using Python and Tkinter.
+Double-click `run_script.bat` to execute the script.
+
+## Notes
+- The script only processes files with valid date entries.
+- If no valid dates are found, a warning will be displayed.
