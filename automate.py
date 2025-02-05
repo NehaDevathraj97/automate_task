@@ -61,6 +61,9 @@ root.withdraw()  # Hide main window
 # Prompt user with default values
 #user_year = simpledialog.askstring("Input", f"Enter Year (YYYY) or leave blank for {latest_year}:", initialvalue=str(latest_year))
 user_month = simpledialog.askstring("Input", f"Enter month (1-12) or leave blank for {latest_month}:", initialvalue=str(latest_month))
+if user_month is None:  # User pressed cancel
+    messagebox.showinfo("Exit", "Operation cancelled by the user.")
+    exit()
 
 # Convert inputs to integers if provided, otherwise use defaults
 #user_year = int(user_year) if user_year and user_year.isdigit() else latest_year
